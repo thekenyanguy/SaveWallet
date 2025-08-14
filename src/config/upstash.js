@@ -3,10 +3,9 @@ import { Ratelimit } from "@upstash/ratelimit";
 
 import "dotenv/config";
 
-// Creates a Redis client using Upstash credentials from environment variables
-const ratelimiter = new Ratelimit({
-redis: Redis.fromEnv(),
-limiter: Ratelimit.slidingWindow(1006, "60 s"), // 4 requests per minute
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(1000, "60 s"),
 });
 
 export default ratelimit;
